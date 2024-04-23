@@ -76,25 +76,37 @@ const TotalPrice = styled.div`
 /**
  * Below is the main CartItem component.
  */
-export const CartItem = ({ data }) => (
+export const CartItem = ({ products, quantity, updateQuantity, removeCartItem }) => (
   <TableRow>
     <TableCell>
       <div style={{ display: 'flex' }}>
-        <ItemImage src={data.imageUrl} alt={`product ${data.name}`} />
+        <ItemImage src={products.imageUrl} alt={`product ${products.name}`} />
         <ItemInfo>
-          <Title>{data.name}</Title>
-          <Subtitle>฿{numberWithCommas(data.price)} ต่อชิ้น</Subtitle>
-          <DeleteButton>ลบ</DeleteButton>
+          <Title>{products.name}</Title>
+          <Subtitle>฿{numberWithCommas(products.price)} ต่อชิ้น</Subtitle>
+          <DeleteButton
+            onClick={() => {
+              if (window.confirm(`คุณต้องการลบ ${products.name} ใช่หรือไม่?`)) {
+                removeCartItem(products.id);
+              }
+            }}
+          >
+            ลบ
+          </DeleteButton>
         </ItemInfo>
       </div>
     </TableCell>
 
     <TableCell style={{ textAlign: 'right' }}>
-      <Input type={'number'} />
+      <Input
+        value={quantity}
+        onChange={(e) => updateQuantity(products.id, e.target.value)}
+        type={'number'}
+      />
     </TableCell>
 
     <TableCell style={{ textAlign: 'right' }}>
-      <TotalPrice>฿{numberWithCommas(data.price)}</TotalPrice>
+      <TotalPrice>฿{numberWithCommas(products.price * quantity)}</TotalPrice>
     </TableCell>
   </TableRow>
 );
