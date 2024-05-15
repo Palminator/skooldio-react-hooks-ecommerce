@@ -9,12 +9,9 @@ import { CardProvider } from './contexts/card';
 
 export const App = () => {
   console.log("test1")
-<<<<<<< HEAD
-  //
-=======
+
   console.log("test2")
   console.log("branchtest2")
->>>>>>> branchtest2
   return (
     <CardProvider>
       <Router>
