@@ -8,9 +8,7 @@ import Footer from './components/Footer';
 import { CardProvider } from './contexts/card';
 
 export const App = () => {
-  console.log("test1")
-console.log("test2")
-  console.log("test3")
+
   return (
     <CardProvider>
       <Router>
