@@ -10,7 +10,6 @@ import { CardProvider } from './contexts/card';
 export const App = () => {
 console.log("1")
 console.log('2')
-
   return (
     <CardProvider>
       <Router>
