@@ -11,6 +11,7 @@ export const App = () => {
 console.log("1")
 console.log('2')
 console.log("3")
+console.log("b2")
   return (
     <CardProvider>
       <Router>
